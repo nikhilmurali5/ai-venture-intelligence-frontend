@@ -14,9 +14,9 @@ function Register() {
 
     try {
       await axios.post(
-        "http://127.0.0.1:8000/create-user",
-        { email, password }
-      );
+  `${import.meta.env.VITE_API_URL}/create-user`,
+  { email, password }
+);
 
       window.location.href = "/login";
     } catch (error) {

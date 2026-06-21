@@ -10,40 +10,41 @@ function IdeaForm({ onAnalysisComplete }: Props) {
   const [idea, setIdea] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const analyzeIdea = async () => {
-    if (!idea) return;
+ const analyzeIdea = async () => {
+  if (!idea) return;
 
-    setLoading(true);
+  setLoading(true);
 
-    try {
-      const token = localStorage.getItem("token");
+  try {
+    const token = localStorage.getItem("token");
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/analyze-idea",
-        { idea },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      onAnalysisComplete(response.data);
-    catch (error: any) {
-  console.log("FULL ERROR:", error);
-
-  if (error.response) {
-    alert(
-      `Status: ${error.response.status}\n\n` +
-      JSON.stringify(error.response.data, null, 2)
+    const response = await axios.post(
+      "https://ai-venture-intelligence-backend.onrender.com/analyze-idea",
+      { idea },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
-  } else {
-    alert(error.message);
-  }
-}
 
+    onAnalysisComplete(response.data);
+
+  } catch (error: any) {
+    console.log("FULL ERROR:", error);
+
+    if (error.response) {
+      alert(
+        `Status: ${error.response.status}\n\n` +
+        JSON.stringify(error.response.data, null, 2)
+      );
+    } else {
+      alert(error.message);
+    }
+  } finally {
     setLoading(false);
-  };
+  }
+};
 
   return (
     <div className="bg-[#120620] border-2 border-pink-500 p-6 shadow-[0_0_20px_rgba(236,72,153,0.15)] relative overflow-hidden">

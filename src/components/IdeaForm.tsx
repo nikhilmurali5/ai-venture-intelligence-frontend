@@ -29,10 +29,18 @@ function IdeaForm({ onAnalysisComplete }: Props) {
       );
 
       onAnalysisComplete(response.data);
-    } catch (error) {
-      console.error(error);
-      alert("CRITICAL ERROR: Connection to Miami Mainframe severed.");
-    }
+    catch (error: any) {
+  console.log("FULL ERROR:", error);
+
+  if (error.response) {
+    alert(
+      `Status: ${error.response.status}\n\n` +
+      JSON.stringify(error.response.data, null, 2)
+    );
+  } else {
+    alert(error.message);
+  }
+}
 
     setLoading(false);
   };

@@ -19,7 +19,7 @@ export default function Dashboard() {
     const token = localStorage.getItem("token");
 
     axios
-      .get("http://127.0.0.1:8000/my-analyses", {
+      axios.get(`${import.meta.env.VITE_API_URL}/my-analyses`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

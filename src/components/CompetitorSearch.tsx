@@ -35,7 +35,7 @@ export default function CompetitorSearch({ idea }: Props) {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/competitor-search",
+        `${import.meta.env.VITE_API_URL}/competitor-search`,
         { idea, location }
       );
 

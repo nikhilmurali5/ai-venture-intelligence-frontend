@@ -206,4 +206,36 @@ export default function CompetitorSearch({ idea }: Props) {
                   transition={{ delay: index * 0.05 }}
                   className="bg-[#1b0a2e] border-2 border-cyan-500/20 p-4 relative hover:border-cyan-400 transition-all group w-full"
                 >
-                  <div className="absolute top-0 left-0 w-2 h-
+                  <div className="absolute top-0 left-0 w-2 h-2 bg-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                  <div className="flex justify-between items-start border-b border-cyan-500/10 pb-2 mb-2 gap-4">
+                    <h3 className="text-xs sm:text-sm md:text-base font-black text-cyan-300 tracking-tight uppercase break-words flex-1">
+                      💥 {competitor.name}
+                    </h3>
+                    <span className="text-[9px] text-pink-500/60 font-bold shrink-0">PROFILE_0{index + 1}</span>
+                  </div>
+
+                  <p className="text-slate-300 leading-relaxed text-[11px] font-sans break-words">
+                    {competitor.description}
+                  </p>
+
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-[10px] sm:text-[11px] pt-2 border-t border-pink-950/40">
+                    <div className="p-2 bg-[#0e2124] border border-cyan-500/20">
+                      <span className="font-black text-cyan-400 uppercase tracking-wider block mb-0.5 text-[9px] sm:text-[10px]">⚡ INTEL STRENGTH</span>
+                      <span className="text-slate-200 break-words">{competitor.strength}</span>
+                    </div>
+
+                    <div className="p-2 bg-[#250e18] border border-rose-500/20">
+                      <span className="font-black text-rose-400 uppercase tracking-wider block mb-0.5 text-[9px] sm:text-[10px]">⚠️ OPERATIONAL FLAW</span>
+                      <span className="text-slate-200 break-words">{competitor.weakness}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}

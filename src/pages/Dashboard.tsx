@@ -156,6 +156,7 @@ export default function Dashboard() {
                 <div className="bg-[#140727] border-2 border-pink-500 p-4 sm:p-6 md:p-8 shadow-[0_0_30px_rgba(219,39,119,0.2)] relative before:absolute before:top-0 before:left-0 before:w-full before:h-1 before:bg-gradient-to-r before:from-pink-500 before:via-fuchsia-500 before:to-cyan-400">
                   <IdeaForm
                     onAnalysisComplete={(data) => {
+                        console.log("ANALYSIS DATA:", data);
                       setLatestAnalysis(data);
                     }}
                   />
